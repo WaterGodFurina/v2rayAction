@@ -171,7 +171,7 @@ jobs:
           bash ./ready.sh
       - name: Connect Server
         run: |
-          sshpass -p ${{ secrets.SERVER_SSH_PASSWORD }} ssh -o "StrictHostKeyChecking no" -f -NT -p ${{ secrets.SERVER_SSH_PORT }} -R :${{ secrets.SERVER_REMOTE_PORT }}:localhost:${{ secrets.SERVER_REMOTE_PORT }} ${{ secrets.SERVER_SSH_USER }}@${{ secrets.SERVER_IP }}
+          sshpass -p ${{ secrets.SERVER_SSH_PASSWORD }} ssh -o "StrictHostKeyChecking no" -f -NT -p ${{ secrets.SERVER_SSH_PORT }} -R :${{ secrets.SERVER_REMOTE_PORT }}:0.0.0.0:${{ secrets.SERVER_REMOTE_PORT }} ${{ secrets.SERVER_SSH_USER }}@${{ secrets.SERVER_IP }}
           for i in {1..30}; do
             echo "Still alive: $(date) — iteration $i"
             sleep 600   # 每 10 分钟打印一次
